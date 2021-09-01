@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CardImage from "./CardImage";
+import Pagination from "./Pagination";
 
 class Results extends Component {
     displayImages = () => {
@@ -8,11 +9,17 @@ class Results extends Component {
         console.log(this.props.images);
 
         return (
-            <div className="col-12 p-5 row">
-                {images.map((item) => {
-                    return <CardImage img={item} key={item.id} />;
-                })}
-            </div>
+            <React.Fragment>
+                <div className="col-12 p-5 row">
+                    {images.map((item) => {
+                        return <CardImage img={item} key={item.id} />;
+                    })}
+                </div>
+                <Pagination
+                    previousPage={this.props.previousPage}
+                    nextPage={this.props.nextPage}
+                />
+            </React.Fragment>
         );
     };
 
